@@ -1,2 +1,2 @@
 # MechanicGrip
-A model of a simple deck of cards
+A model of a simple deck of cards in C#
