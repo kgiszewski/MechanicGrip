@@ -9,6 +9,8 @@ namespace MechanicGrip.Core.Decks
     {
         public override void Initialize()
         {
+            Cards.Clear();
+
             var suits = new List<Suit> { new Suit(Suit.Clubs), new Suit(Suit.Spades), new Suit(Suit.Hearts), new Suit(Suit.Diamonds) };
             var ranks = new List<Rank>
             {

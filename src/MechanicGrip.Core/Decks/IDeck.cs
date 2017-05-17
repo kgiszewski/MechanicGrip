@@ -8,6 +8,6 @@ namespace MechanicGrip.Core.Decks
         void Initialize();
         void Shuffle();
         void Cut();
-        Stack<Card> GetDeck();
+        Stack<Card> GetCards();
     }
 }

@@ -29,7 +29,7 @@ namespace MechanicGrip.Core.Decks
             }
         }
 
-        public virtual Stack<Card> GetDeck()
+        public virtual Stack<Card> GetCards()
         {
             return Cards;
         }
