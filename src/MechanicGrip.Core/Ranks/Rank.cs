@@ -1,16 +1,7 @@
 ﻿namespace MechanicGrip.Core.Ranks
 {
-    public class Rank
+    public class Rank : RankBase
     {
-        private int _value;
-        public int Value => _value;
-
-        private string _symbol;
-        public string Symbol => _symbol;
-
-        private string _name;
-        public string Name => _name;
-
         public static string Two = "Two";
         public static string Three = "Three";
         public static string Four = "Four";
@@ -39,11 +30,8 @@
         public static string KingSymbol = "K";
         public static string AceSymbol = "A";
 
-        public Rank(int value, string symbol, string name)
+        public Rank(int value, string symbol, string name) : base(value, symbol, name)
         {
-            _value = value;
-            _symbol = symbol;
-            _name = name;
         }
     }
 }

@@ -9,7 +9,7 @@ namespace MechanicGrip.Core.Decks
 {
     public abstract class DeckBase : IDeck
     {
-        protected readonly Stack<Card> Cards = new Stack<Card>();
+        public Stack<ICard> Cards { get; } = new Stack<ICard>();
         private readonly Random _rand = new Random();
 
         public virtual void Cut()
@@ -29,15 +29,10 @@ namespace MechanicGrip.Core.Decks
             }
         }
 
-        public virtual Stack<Card> GetCards()
-        {
-            return Cards;
-        }
-
         public virtual void Initialize()
         {
-            var suits = new List<Suit> { new Suit(Suit.Clubs), new Suit(Suit.Spades), new Suit(Suit.Hearts), new Suit(Suit.Diamonds) };
-            var ranks = new List<Rank>
+            var suits = new List<ISuit> { new Suit(Suit.Clubs), new Suit(Suit.Spades), new Suit(Suit.Hearts), new Suit(Suit.Diamonds) };
+            var ranks = new List<IRank>
             {
                 new Rank(2, Rank.TwoSymbol, Rank.Two),
                 new Rank(3, Rank.ThreeSymbol, Rank.Three),
@@ -58,7 +53,7 @@ namespace MechanicGrip.Core.Decks
             {
                 foreach (var rank in ranks)
                 {
-                    Cards.Push(new Card(suit, rank));
+                    Cards.Push(new StandardCard(suit, rank));
                 }
             }
         }
@@ -91,9 +86,9 @@ namespace MechanicGrip.Core.Decks
             }
         }
 
-        private static void _moveCards(Stack<Card> fromStack, Stack<Card> toStack, int numberOfCards)
+        private static void _moveCards(Stack<ICard> fromStack, Stack<ICard> toStack, int numberOfCards)
         {
-            var tempList = new List<Card>();
+            var tempList = new List<ICard>();
 
             var iterations = (fromStack.Count < numberOfCards) ? fromStack.Count : numberOfCards;
 
@@ -124,7 +119,7 @@ namespace MechanicGrip.Core.Decks
             return cardsToMove;
         }
 
-        private Tuple<Stack<Card>, Stack<Card>> _splitCardsIntoTwoHalves()
+        private Tuple<Stack<ICard>, Stack<ICard>> _splitCardsIntoTwoHalves()
         {
             //split deck into two similar halves
             var totalNumberOfCards = Cards.Count();
@@ -147,10 +142,10 @@ namespace MechanicGrip.Core.Decks
                 rightHandCardsCount += randomVariance;
             }
 
-            var leftHandCards = new Stack<Card>();
+            var leftHandCards = new Stack<ICard>();
             _moveCards(Cards, leftHandCards, leftHandCardsCount);
 
-            var rightHandCards = new Stack<Card>();
+            var rightHandCards = new Stack<ICard>();
             _moveCards(Cards, rightHandCards, rightHandCardsCount);
 
             if (Cards.Any())
@@ -158,7 +153,7 @@ namespace MechanicGrip.Core.Decks
                 throw new Exception("You shouldn't have any cards left in the pile!");
             }
 
-            return new Tuple<Stack<Card>, Stack<Card>>(leftHandCards, rightHandCards);
+            return new Tuple<Stack<ICard>, Stack<ICard>>(leftHandCards, rightHandCards);
         }
     }
 }

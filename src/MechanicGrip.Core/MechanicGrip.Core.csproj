@@ -41,13 +41,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cards\Card.cs" />
+    <Compile Include="Cards\CardBase.cs" />
+    <Compile Include="Cards\ICard.cs" />
     <Compile Include="Decks\EuchreDeck.cs" />
     <Compile Include="Decks\StandardDeck.cs" />
     <Compile Include="Decks\DeckBase.cs" />
     <Compile Include="Decks\IDeck.cs" />
+    <Compile Include="Ranks\IRank.cs" />
     <Compile Include="Ranks\Rank.cs" />
+    <Compile Include="Ranks\RankBase.cs" />
+    <Compile Include="Suits\ISuit.cs" />
     <Compile Include="Suits\Suit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Suits\SuitBase.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

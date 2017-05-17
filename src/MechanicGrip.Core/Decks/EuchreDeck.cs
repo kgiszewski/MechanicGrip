@@ -11,8 +11,8 @@ namespace MechanicGrip.Core.Decks
         {
             Cards.Clear();
 
-            var suits = new List<Suit> { new Suit(Suit.Clubs), new Suit(Suit.Spades), new Suit(Suit.Hearts), new Suit(Suit.Diamonds) };
-            var ranks = new List<Rank>
+            var suits = new List<ISuit> { new Suit(Suit.Clubs), new Suit(Suit.Spades), new Suit(Suit.Hearts), new Suit(Suit.Diamonds) };
+            var ranks = new List<IRank>
             {
                 new Rank(9, Rank.NineSymbol, Rank.Nine),
                 new Rank(10, Rank.TenSymbol, Rank.Ten),
@@ -26,7 +26,7 @@ namespace MechanicGrip.Core.Decks
             {
                 foreach (var rank in ranks)
                 {
-                    Cards.Push(new Card(suit, rank));
+                    Cards.Push(new StandardCard(suit, rank));
                 }
             }
         }

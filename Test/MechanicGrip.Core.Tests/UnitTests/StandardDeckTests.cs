@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using MechanicGrip.Core.Cards;
 using MechanicGrip.Core.Decks;
-using MechanicGrip.Core.Ranks;
-using MechanicGrip.Core.Suits;
 using NUnit.Framework;
 
 namespace MechanicGrip.Core.Tests.UnitTests
@@ -19,7 +17,7 @@ namespace MechanicGrip.Core.Tests.UnitTests
 
             sut.Initialize();
 
-            var cards = sut.GetCards();
+            var cards = sut.Cards;
             
             Assert.AreEqual(52, cards.Count());
         }
@@ -31,9 +29,9 @@ namespace MechanicGrip.Core.Tests.UnitTests
 
             sut.Initialize();
 
-            var cards = sut.GetCards();
+            var cards = sut.Cards;
 
-            var hashes = new Dictionary<int, Card>();
+            var hashes = new Dictionary<int, ICard>();
 
             foreach (var card in cards)
             {
@@ -89,7 +87,7 @@ namespace MechanicGrip.Core.Tests.UnitTests
             var sut = new StandardDeck();
             sut.Initialize();
 
-            var cards = sut.GetCards();
+            var cards = sut.Cards;
 
             _dumpToConsole(cards);
 
@@ -98,7 +96,7 @@ namespace MechanicGrip.Core.Tests.UnitTests
             _dumpToConsole(cards);
         }
 
-        private void _dumpToConsole(Stack<Card> cards)
+        private void _dumpToConsole(Stack<ICard> cards)
         {
             Console.WriteLine($"====");
 
