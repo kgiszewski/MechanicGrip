@@ -33,10 +33,10 @@ namespace MechanicGrip.Core.Decks
         {
             var suits = new List<ISuit>
             {
-                new Suit(Suit.Clubs, Suit.ClubsSymbol),
-                new Suit(Suit.Spades, Suit.SpadesSymbol),
-                new Suit(Suit.Hearts, Suit.HeartsSymbol),
-                new Suit(Suit.Diamonds, Suit.DiamondsSymbol)
+                Suit.Clubs,
+                Suit.Diamonds,
+                Suit.Spades,
+                Suit.Hearts
             };
 
             var ranks = new List<IRank>
