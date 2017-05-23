@@ -31,7 +31,14 @@ namespace MechanicGrip.Core.Decks
 
         public virtual void Initialize()
         {
-            var suits = new List<ISuit> { new Suit(Suit.Clubs), new Suit(Suit.Spades), new Suit(Suit.Hearts), new Suit(Suit.Diamonds) };
+            var suits = new List<ISuit>
+            {
+                new Suit(Suit.Clubs, Suit.ClubsSymbol),
+                new Suit(Suit.Spades, Suit.SpadesSymbol),
+                new Suit(Suit.Hearts, Suit.HeartsSymbol),
+                new Suit(Suit.Diamonds, Suit.DiamondsSymbol)
+            };
+
             var ranks = new List<IRank>
             {
                 new Rank(2, Rank.TwoSymbol, Rank.Two),
