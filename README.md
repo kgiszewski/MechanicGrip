@@ -17,3 +17,14 @@ deck.Cut(); //cuts the decks
 deck.Cards; //returns a list of cards as Stack<ICard>
 
 ```
+
+## Extensible
+You can implements your own:
+- Decks
+- Ranks
+- Suits
+
+It's totally up to you how to create each of those.
+
+## Nuget
+Get it on Nuget: https://www.nuget.org/packages/MechanicGrip
