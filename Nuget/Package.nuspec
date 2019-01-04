@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>MechanicGrip</id>
+    <version>0.0.1.0</version>
+    <authors>Kevin Giszewski</authors>
+    <owners>Kevin Giszewski</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A deck of cards modeled in C#.</description>
+    <releaseNotes>A deck of cards modeled in C#.</releaseNotes>
+    <copyright>Copyright 2019</copyright>
+    <tags>
+    </tags>
+    <dependencies>
+    </dependencies>
+  </metadata>
+</package>
