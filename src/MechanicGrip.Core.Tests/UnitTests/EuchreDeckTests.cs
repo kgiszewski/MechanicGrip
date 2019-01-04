@@ -8,22 +8,22 @@ using NUnit.Framework;
 namespace MechanicGrip.Core.Tests.UnitTests
 {
     [TestFixture]
-    public class StandardDeckTests
+    public class EuchreDeckTests
     {
         [Test]
-        public void Deck_Has_52_Cards()
+        public void Deck_Has_24_Cards()
         {
-            var sut = new StandardDeck();
+            var sut = new EuchreDeck();
 
             var cards = sut.Cards;
             
-            Assert.AreEqual(52, cards.Count());
+            Assert.AreEqual(24, cards.Count());
         }
 
         [Test]
         public void All_Cards_Are_Unique()
         {
-            var sut = new StandardDeck();
+            var sut = new EuchreDeck();
 
             var cards = sut.Cards;
 
@@ -42,13 +42,13 @@ namespace MechanicGrip.Core.Tests.UnitTests
                 } 
             }
 
-            Assert.AreEqual(52, hashes.Count);
+            Assert.AreEqual(24, hashes.Count);
         }
 
         [Test]
         public void Can_Shuffle_Cards()
         {
-            var sut = new StandardDeck();
+            var sut = new EuchreDeck();
            
             for (var i = 0; i < 100; i++)
             {
@@ -57,44 +57,19 @@ namespace MechanicGrip.Core.Tests.UnitTests
 
             All_Cards_Are_Unique();
 
-            Deck_Has_52_Cards();
+            Deck_Has_24_Cards();
         }
 
         [Test]
         public void Can_Cut_Cards()
         {
-            var sut = new StandardDeck();
+            var sut = new EuchreDeck();
 
             sut.Cut();
 
             All_Cards_Are_Unique();
 
-            Deck_Has_52_Cards();
-        }
-
-        [Test]
-        [Ignore]
-        public void Utility()
-        {
-            var sut = new StandardDeck();
-
-            var cards = sut.Cards;
-
-            _dumpToConsole(cards);
-
-            sut.Cut();
-
-            _dumpToConsole(cards);
-        }
-
-        private void _dumpToConsole(Stack<ICard> cards)
-        {
-            Console.WriteLine($"====");
-
-            foreach (var card in cards)
-            {
-                Console.WriteLine($"{card.Rank.Name} of {card.Suit.Name}");
-            }
+            Deck_Has_24_Cards();
         }
     }
 }
