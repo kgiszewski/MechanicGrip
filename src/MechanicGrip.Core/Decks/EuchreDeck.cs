@@ -13,20 +13,20 @@ namespace MechanicGrip.Core.Decks
 
             var suits = new List<ISuit>
             {
-                Suit.Clubs,
-                Suit.Diamonds,
-                Suit.Spades,
-                Suit.Hearts
+                StandardSuit.Clubs,
+                StandardSuit.Diamonds,
+                StandardSuit.Spades,
+                StandardSuit.Hearts
             };
 
             var ranks = new List<IRank>
             {
-                new Rank(9, Rank.NineSymbol, Rank.Nine),
-                new Rank(10, Rank.TenSymbol, Rank.Ten),
-                new Rank(11, Rank.JackSymbol, Rank.Jack),
-                new Rank(12, Rank.QueenSymbol, Rank.Queen),
-                new Rank(13, Rank.KingSymbol, Rank.King),
-                new Rank(14, Rank.AceSymbol, Rank.Ace)
+                new StandardRank(9, StandardRank.NineSymbol, StandardRank.Nine),
+                new StandardRank(10, StandardRank.TenSymbol, StandardRank.Ten),
+                new StandardRank(11, StandardRank.JackSymbol, StandardRank.Jack),
+                new StandardRank(12, StandardRank.QueenSymbol, StandardRank.Queen),
+                new StandardRank(13, StandardRank.KingSymbol, StandardRank.King),
+                new StandardRank(14, StandardRank.AceSymbol, StandardRank.Ace)
             };
 
             foreach (var suit in suits)

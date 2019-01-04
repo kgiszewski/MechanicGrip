@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MechanicGrip.Core", "MechanicGrip.Core\MechanicGrip.Core.csproj", "{20AF9DCA-78B3-4D70-8805-F7AAE5736FBB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MechanicGrip.Core.Tests", "..\Test\MechanicGrip.Core.Tests\MechanicGrip.Core.Tests.csproj", "{4A6512F1-20A9-462D-832E-B43E889FE751}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MechanicGrip.Core.Tests", "MechanicGrip.Core.Tests\MechanicGrip.Core.Tests.csproj", "{4A6512F1-20A9-462D-832E-B43E889FE751}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
