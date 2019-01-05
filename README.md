@@ -13,9 +13,12 @@ So far these decks are modeled:
 var deck = new StandardDeck(); //or whatever deck you pick
 
 deck.Shuffle(); //shuffle the cards for one iteration
-deck.Cut(); //cuts the decks
-deck.Cards; //returns a list of cards as Stack<ICard>
-
+deck.Shuffle(100); //shuffle the cards for 100 iterations
+deck.Cut(); //cuts the decks once
+deck.Cut(100); //cuts the decks 100 times
+deck.Cards; //returns a list of cards as List<ICard>
+deck.Deal(); //deal out the cards with some options as IEnumerable<IEnumberable<ICard>>
+deck.Draw(); //grab the top card
 ```
 
 ## Extensible
