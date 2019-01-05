@@ -26,6 +26,9 @@ You can implements your own:
 - Decks
 - Ranks
 - Suits
+- Deal Patterns
+
+Overloads so you can mix and match deal patterns.
 
 It's totally up to you how to create each of those.
 
