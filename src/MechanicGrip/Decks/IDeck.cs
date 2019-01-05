@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using MechanicGrip.Cards;
+using MechanicGrip.Dealing;
 
 namespace MechanicGrip.Decks
 {
@@ -8,7 +9,7 @@ namespace MechanicGrip.Decks
         void Shuffle(int iterations = 1);
         void Cut(int iterations = 1);
         Stack<ICard> Cards { get; }
-        IEnumerable<IEnumerable<ICard>> Deal(int groups, int cardsPerGroup, bool asEvenPiles = true);
+        IEnumerable<IEnumerable<ICard>> Deal(DealingOptions options = null);
         ICard Draw();
     }
 }

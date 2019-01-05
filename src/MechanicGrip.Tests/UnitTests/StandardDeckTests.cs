@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using MechanicGrip.Cards;
+using MechanicGrip.Dealing;
 using MechanicGrip.Decks;
 using MechanicGrip.Extensions;
 using MechanicGrip.Ranks;
@@ -88,7 +89,11 @@ namespace MechanicGrip.Tests.UnitTests
             //throws if more than the cards in deck
             Assert.Throws<InvalidOperationException>(() =>
             {
-                sut.Deal(1, 100);
+                sut.Deal(new DealingOptions
+                {
+                    Groups = 1,
+                    CardsPerGroup = 100
+                });
             });
 
             sut = new StandardDeck();
@@ -96,14 +101,23 @@ namespace MechanicGrip.Tests.UnitTests
             //does not throw if more than the cards in deck
             Assert.DoesNotThrow(() =>
             {
-                sut.Deal(1, 100, false);
+                sut.Deal(new DealingOptions
+                {
+                    Groups = 1,
+                    CardsPerGroup = 100,
+                    AsEvenPiles = false
+                });
             });
 
             sut = new StandardDeck();
 
             var newSetOfCards = new StandardDeck();
 
-            var result = sut.Deal(3, 5).ToList();
+            var result = sut.Deal(new DealingOptions
+            {
+                Groups = 3,
+                CardsPerGroup = 5
+            }).ToList();
 
             var player1ExpectedCards = new List<ICard>
             {

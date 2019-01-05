@@ -16,9 +16,9 @@ namespace MechanicGrip.Decks
         }
 
         public Stack<ICard> Cards { get; } = new Stack<ICard>();
-        public IEnumerable<IEnumerable<ICard>> Deal(int groups, int cardsPerGroup, bool asEvenPiles = true)
+        public IEnumerable<IEnumerable<ICard>> Deal(DealingOptions options = null)
         {
-            return _dealPattern.Deal(this, groups, cardsPerGroup, asEvenPiles);
+            return _dealPattern.Deal(this, options);
         }
 
         public ICard Draw()

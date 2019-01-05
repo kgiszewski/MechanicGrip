@@ -8,12 +8,12 @@ namespace MechanicGrip.Dealing
 {
     public class NormalDealPattern : IDealPattern
     {
-        public IEnumerable<IEnumerable<ICard>> Deal(IDeck deck, int groups, int cardsPerGroup, bool asEvenPiles = true)
+        public IEnumerable<IEnumerable<ICard>> Deal(IDeck deck, DealingOptions options)
         {
-            if (asEvenPiles)
+            if (options.AsEvenPiles)
             {
                 //make sure we have enough cards
-                if (groups * cardsPerGroup > deck.Cards.Count)
+                if (options.Groups * options.CardsPerGroup > deck.Cards.Count)
                 {
                     throw new InvalidOperationException("There is not enough cards.");
                 }
@@ -21,13 +21,13 @@ namespace MechanicGrip.Dealing
 
             var dealtCards = new List<List<ICard>>();
 
-            for (var i = 0; i < groups; i++)
+            for (var i = 0; i < options.Groups; i++)
             {
                 var cardsForGroup = new List<ICard>();
 
                 dealtCards.Add(cardsForGroup);
 
-                for (var j = 0; j < cardsPerGroup; j++)
+                for (var j = 0; j < options.CardsPerGroup; j++)
                 {
                     if (!deck.Cards.Any())
                     {

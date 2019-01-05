@@ -9,7 +9,7 @@ namespace MechanicGrip.Decks
     public class EuchreDeck : DeckBase
     {
         public EuchreDeck(int deckCount = 1)
-            :this(new NormalDealPattern(), deckCount)
+            :this(new EuchreDealPattern(), deckCount)
         {
             
         }

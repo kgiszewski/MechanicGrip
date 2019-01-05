@@ -44,6 +44,8 @@
     <Compile Include="Cards\StandardCard.cs" />
     <Compile Include="Cards\CardBase.cs" />
     <Compile Include="Cards\ICard.cs" />
+    <Compile Include="Dealing\DealingOptions.cs" />
+    <Compile Include="Dealing\EuchreDealPattern.cs" />
     <Compile Include="Dealing\IDealPattern.cs" />
     <Compile Include="Dealing\NormalDealPattern.cs" />
     <Compile Include="Decks\EuchreDeck.cs" />
