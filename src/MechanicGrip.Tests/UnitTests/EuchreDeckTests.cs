@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using MechanicGrip.Cards;
-using MechanicGrip.Dealing;
 using MechanicGrip.Decks;
 using MechanicGrip.Extensions;
 using MechanicGrip.Ranks;
@@ -95,28 +94,28 @@ namespace MechanicGrip.Tests.UnitTests
 
             var player1ExpectedCards = new List<ICard>
             {
-                newSetOfCards.Cards.Pop(),
-                newSetOfCards.Cards.Pop(),
-                newSetOfCards.Cards.Pop()
+                newSetOfCards.Draw(),
+                newSetOfCards.Draw(),
+                newSetOfCards.Draw()
             };
 
             var player2ExpectedCards = new List<ICard>
             {
-                newSetOfCards.Cards.Pop(),
-                newSetOfCards.Cards.Pop()
+                newSetOfCards.Draw(),
+                newSetOfCards.Draw()
             };
 
             var player3ExpectedCards = new List<ICard>
             {
-                newSetOfCards.Cards.Pop(),
-                newSetOfCards.Cards.Pop(),
-                newSetOfCards.Cards.Pop(),
+                newSetOfCards.Draw(),
+                newSetOfCards.Draw(),
+                newSetOfCards.Draw(),
             };
             
             var player4ExpectedCards = new List<ICard>
             {
-                newSetOfCards.Cards.Pop(),
-                newSetOfCards.Cards.Pop(),
+                newSetOfCards.Draw(),
+                newSetOfCards.Draw(),
             };
 
             player1ExpectedCards.Add(newSetOfCards.Draw());

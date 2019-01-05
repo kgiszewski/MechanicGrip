@@ -15,7 +15,9 @@ namespace MechanicGrip.Decks
             _dealPattern = dealPattern;
         }
 
-        public Stack<ICard> Cards { get; } = new Stack<ICard>();
+        protected Stack<ICard> CardStack { get; } = new Stack<ICard>();
+        public List<ICard> Cards => CardStack.ToList();
+
         public IEnumerable<IEnumerable<ICard>> Deal(DealingOptions options = null)
         {
             return _dealPattern.Deal(this, options);
@@ -23,12 +25,12 @@ namespace MechanicGrip.Decks
 
         public ICard Draw()
         {
-            if (!Cards.Any())
+            if (!CardStack.Any())
             {
                 throw new InvalidOperationException("There are no cards left!");
             }
 
-            return Cards.Pop();
+            return CardStack.Pop();
         }
 
         private readonly Random _rand = new Random();
@@ -37,18 +39,18 @@ namespace MechanicGrip.Decks
         {
             for (var i = 0; i < iterations; i++)
             {
-                var startingNumberOfCards = Cards.Count;
+                var startingNumberOfCards = CardStack.Count;
 
                 var splitDeck = _splitCardsIntoTwoHalves();
                 var leftHandCards = splitDeck.Item1;
                 var rightHandCards = splitDeck.Item2;
 
-                _moveCards(leftHandCards, Cards, leftHandCards.Count);
-                _moveCards(rightHandCards, Cards, rightHandCards.Count);
+                _moveCards(leftHandCards, CardStack, leftHandCards.Count);
+                _moveCards(rightHandCards, CardStack, rightHandCards.Count);
 
-                if (Cards.Count != startingNumberOfCards)
+                if (CardStack.Count != startingNumberOfCards)
                 {
-                    throw new Exception($"You have a different number of cards in your deck! {Cards.Count} != {startingNumberOfCards}");
+                    throw new Exception($"You have a different number of cards in your deck! {CardStack.Count} != {startingNumberOfCards}");
                 }
             }
         }
@@ -57,7 +59,7 @@ namespace MechanicGrip.Decks
         {
             for (var i = 0; i < iterations; i++)
             {
-                var startingNumberOfCards = Cards.Count;
+                var startingNumberOfCards = CardStack.Count;
 
                 var splitDeck = _splitCardsIntoTwoHalves();
                 var leftHandCards = splitDeck.Item1;
@@ -66,19 +68,19 @@ namespace MechanicGrip.Decks
                 //interleave cards either 1-3 cards at a time
                 while (leftHandCards.Count > 0)
                 {
-                    _moveCards(leftHandCards, Cards, _getNumberOfCardsToMove());
-                    _moveCards(rightHandCards, Cards, _getNumberOfCardsToMove());
+                    _moveCards(leftHandCards, CardStack, _getNumberOfCardsToMove());
+                    _moveCards(rightHandCards, CardStack, _getNumberOfCardsToMove());
                 }
 
                 //if any cards are leftover in the right hand deck, move them
                 if (rightHandCards.Any())
                 {
-                    _moveCards(rightHandCards, Cards, rightHandCards.Count);
+                    _moveCards(rightHandCards, CardStack, rightHandCards.Count);
                 }
 
-                if (Cards.Count != startingNumberOfCards)
+                if (CardStack.Count != startingNumberOfCards)
                 {
-                    throw new Exception($"You have a different number of cards in your deck! {Cards.Count} != {startingNumberOfCards}");
+                    throw new Exception($"You have a different number of cards in your deck! {CardStack.Count} != {startingNumberOfCards}");
                 }
             }
         }
@@ -119,7 +121,7 @@ namespace MechanicGrip.Decks
         private Tuple<Stack<ICard>, Stack<ICard>> _splitCardsIntoTwoHalves()
         {
             //split deck into two similar halves
-            var totalNumberOfCards = Cards.Count;
+            var totalNumberOfCards = CardStack.Count;
 
             var leftHandCardsCount = (totalNumberOfCards / 2);
             var rightHandCardsCount = totalNumberOfCards - leftHandCardsCount;
@@ -140,12 +142,12 @@ namespace MechanicGrip.Decks
             }
 
             var leftHandCards = new Stack<ICard>();
-            _moveCards(Cards, leftHandCards, leftHandCardsCount);
+            _moveCards(CardStack, leftHandCards, leftHandCardsCount);
 
             var rightHandCards = new Stack<ICard>();
-            _moveCards(Cards, rightHandCards, rightHandCardsCount);
+            _moveCards(CardStack, rightHandCards, rightHandCardsCount);
 
-            if (Cards.Any())
+            if (CardStack.Any())
             {
                 throw new Exception("You shouldn't have any cards left in the pile!");
             }

@@ -43,7 +43,7 @@ namespace MechanicGrip.Decks
                 {
                     foreach (var rank in ranks)
                     {
-                        Cards.Push(new StandardCard(suit, rank));
+                        CardStack.Push(new StandardCard(suit, rank));
                     }
                 }
             }

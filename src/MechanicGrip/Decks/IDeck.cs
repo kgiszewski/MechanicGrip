@@ -8,7 +8,7 @@ namespace MechanicGrip.Decks
     { 
         void Shuffle(int iterations = 1);
         void Cut(int iterations = 1);
-        Stack<ICard> Cards { get; }
+        List<ICard> Cards { get; }
         IEnumerable<IEnumerable<ICard>> Deal(DealingOptions options = null);
         ICard Draw();
     }

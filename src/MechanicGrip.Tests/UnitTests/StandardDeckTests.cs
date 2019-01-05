@@ -121,29 +121,29 @@ namespace MechanicGrip.Tests.UnitTests
 
             var player1ExpectedCards = new List<ICard>
             {
-                newSetOfCards.Cards.Pop(),
-                newSetOfCards.Cards.Pop(),
-                newSetOfCards.Cards.Pop(),
-                newSetOfCards.Cards.Pop(),
-                newSetOfCards.Cards.Pop()
+                newSetOfCards.Draw(),
+                newSetOfCards.Draw(),
+                newSetOfCards.Draw(),
+                newSetOfCards.Draw(),
+                newSetOfCards.Draw()
             };
 
             var player2ExpectedCards = new List<ICard>
             {
-                newSetOfCards.Cards.Pop(),
-                newSetOfCards.Cards.Pop(),
-                newSetOfCards.Cards.Pop(),
-                newSetOfCards.Cards.Pop(),
-                newSetOfCards.Cards.Pop()
+                newSetOfCards.Draw(),
+                newSetOfCards.Draw(),
+                newSetOfCards.Draw(),
+                newSetOfCards.Draw(),
+                newSetOfCards.Draw()
             };
 
             var player3ExpectedCards = new List<ICard>
             {
-                newSetOfCards.Cards.Pop(),
-                newSetOfCards.Cards.Pop(),
-                newSetOfCards.Cards.Pop(),
-                newSetOfCards.Cards.Pop(),
-                newSetOfCards.Cards.Pop()
+                newSetOfCards.Draw(),
+                newSetOfCards.Draw(),
+                newSetOfCards.Draw(),
+                newSetOfCards.Draw(),
+                newSetOfCards.Draw()
             };
 
             var dealtPile1 = result.ElementAt(0).ToList();
@@ -211,7 +211,7 @@ namespace MechanicGrip.Tests.UnitTests
             _dumpToConsole(cards);
         }
 
-        private void _dumpToConsole(Stack<ICard> cards)
+        private void _dumpToConsole(List<ICard> cards)
         {
             Console.WriteLine($"====");
 
