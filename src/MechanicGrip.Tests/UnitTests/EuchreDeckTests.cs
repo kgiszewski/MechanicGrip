@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using MechanicGrip.Cards;
 using MechanicGrip.Decks;
+using MechanicGrip.Ranks;
+using MechanicGrip.Suits;
 using NUnit.Framework;
 
 namespace MechanicGrip.Tests.UnitTests
@@ -11,13 +13,20 @@ namespace MechanicGrip.Tests.UnitTests
     public class EuchreDeckTests
     {
         [Test]
-        public void Deck_Has_24_Cards()
+        [TestCase(1, 24)]
+        [TestCase(2, 48)]
+        public void Deck_Has_N_Cards(int deckCount, int expectedCardCount)
         {
-            var sut = new EuchreDeck();
+            var sut = new EuchreDeck(deckCount);
 
             var cards = sut.Cards;
-            
-            Assert.AreEqual(24, cards.Count());
+
+            Assert.AreEqual(expectedCardCount, cards.Count);
+
+            //we should have n-number of any particular card
+            var queenOfHearts = cards.Where(x => x.Rank.Name == StandardRank.Queen && x.Suit == StandardSuit.Hearts);
+
+            Assert.AreEqual(deckCount, queenOfHearts.Count());
         }
 
         [Test]
@@ -32,6 +41,7 @@ namespace MechanicGrip.Tests.UnitTests
             foreach (var card in cards)
             {
                 var hash = card.GetHashCode();
+
                 if (hashes.ContainsKey(hash))
                 {
                     throw new Exception($"{card.Rank} {card.Suit} has already been added to this list!");
@@ -57,7 +67,7 @@ namespace MechanicGrip.Tests.UnitTests
 
             All_Cards_Are_Unique();
 
-            Deck_Has_24_Cards();
+            Assert.AreEqual(24, sut.Cards.Count);
         }
 
         [Test]
@@ -69,7 +79,7 @@ namespace MechanicGrip.Tests.UnitTests
 
             All_Cards_Are_Unique();
 
-            Deck_Has_24_Cards();
+            Assert.AreEqual(24, sut.Cards.Count);
         }
     }
 }

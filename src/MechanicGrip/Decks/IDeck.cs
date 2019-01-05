@@ -5,8 +5,10 @@ namespace MechanicGrip.Decks
 {
     public interface IDeck
     { 
-        void Shuffle();
-        void Cut();
+        void Shuffle(int iterations = 1);
+        void Cut(int iterations = 1);
         Stack<ICard> Cards { get; }
+        IEnumerable<IEnumerable<ICard>> Deal(int groups, int cardsPerGroup, bool asEvenPiles = true);
+        ICard Draw();
     }
 }

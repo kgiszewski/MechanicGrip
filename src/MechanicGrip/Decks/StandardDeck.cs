@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using MechanicGrip.Cards;
+using MechanicGrip.Dealing;
 using MechanicGrip.Ranks;
 using MechanicGrip.Suits;
 
@@ -7,7 +8,14 @@ namespace MechanicGrip.Decks
 {
     public class StandardDeck : DeckBase
     {
-        public StandardDeck()
+        public StandardDeck(int deckCount = 1)
+            :this(new NormalDealPattern(), deckCount)
+        {
+            
+        }
+
+        public StandardDeck(IDealPattern dealPattern, int deckCount = 1)
+            :base(dealPattern)
         {
             var suits = new List<ISuit>
             {
@@ -34,11 +42,14 @@ namespace MechanicGrip.Decks
                 new StandardRank(14, StandardRank.AceSymbol, StandardRank.Ace)
             };
 
-            foreach (var suit in suits)
+            for (var i = 0; i < deckCount; i++)
             {
-                foreach (var rank in ranks)
+                foreach (var suit in suits)
                 {
-                    Cards.Push(new StandardCard(suit, rank));
+                    foreach (var rank in ranks)
+                    {
+                        Cards.Push(new StandardCard(suit, rank));
+                    }
                 }
             }
         }
